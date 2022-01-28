@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -21,9 +24,19 @@ namespace CryptoProjectGundoganDahbi
     public partial class MainWindow : Window
     {
         String selectedCoin = "";
+        BinanceRelation _bRelation;
+        Dictionary<String, decimal> _coinsDictionary = new Dictionary<String, decimal>();
         public MainWindow()
         {
             InitializeComponent();
+            CultureInfo USCulture = new CultureInfo("en-US");
+            Thread.CurrentThread.CurrentCulture = USCulture;
+
+            string api_key = "";
+            string api_secret = "";
+
+            _bRelation = new BinanceRelation(api_key, api_secret);
+            _coinsDictionary = _bRelation.BuildDictionary();
         }
 
         private void m_Search_Box_GotFocus(object sender, RoutedEventArgs e)
@@ -38,9 +51,15 @@ namespace CryptoProjectGundoganDahbi
             PriceTextBoxMarket.Text = "";
             if (e.Key == Key.Enter)
             {
-                //NOT IMPLEMENTED - Check if coin exists in the market
-                //NOT IMPLEMENTED - UpdateTheChartForSelectedCoin
-                //NOT IMPLEMENTED - UpdateTheLabelsForSelectedCoin
+                if (_coinsDictionary.ContainsKey(m_Search_Box.Text))
+                {
+                    updateUILabelsForSelectedCoin(m_Search_Box.Text);
+                    selectedCoin = m_Search_Box.Text;
+                }
+                else
+                {
+                    MessageBox.Show("We could not find this parity... " + m_Search_Box.Text);
+                }
             }
         }
 
@@ -99,8 +118,8 @@ namespace CryptoProjectGundoganDahbi
             symbol = selectedCoin;
             amount = Convert.ToDecimal(AmountTextBoxMarket.Text);
 
-            //NOT IMPLEMENTED buy with binance class and get the output as a string
-            //NOT IMPLEMENTED show the output to the user
+            string z = _bRelation.BuyOrSellWithMarketOrLimit(symbol, Binance.Net.Enums.OrderSide.Buy, amount);
+            MessageBox.Show(z);
         }
 
         private void MarketSELLBtn_Click(object sender, RoutedEventArgs e)
@@ -130,8 +149,16 @@ namespace CryptoProjectGundoganDahbi
             amount = Convert.ToDecimal(AmountTextBoxMarket.Text);
 
 
-            //NOT IMPLEMENTED SELL with binance class and get the output as a string
-            //NOT IMPLEMENTED show the output to the user
+            string z = _bRelation.BuyOrSellWithMarketOrLimit(symbol, Binance.Net.Enums.OrderSide.Sell, amount);
+            MessageBox.Show(z.ToString());
+        }
+
+        private void updateUILabelsForSelectedCoin(string symbol)
+        {
+            List<decimal> coinInfos = _bRelation.UpdatePriceOfSymbol(symbol);
+            CurrentPriceLabel.Content = symbol + "(%" + coinInfos[1] + ")" + ": " + coinInfos[0];
+            dHighLabel.Content = "Daily High: $" + coinInfos[4];
+            dLowLabel.Content = "Daily Low: $" + coinInfos[3];
         }
     }
 }
