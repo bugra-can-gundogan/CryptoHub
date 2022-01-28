@@ -20,6 +20,7 @@ namespace CryptoProjectGundoganDahbi
     /// </summary>
     public partial class MainWindow : Window
     {
+        String selectedCoin = "";
         public MainWindow()
         {
             InitializeComponent();
@@ -27,37 +28,110 @@ namespace CryptoProjectGundoganDahbi
 
         private void m_Search_Box_GotFocus(object sender, RoutedEventArgs e)
         {
-            //NOT IMPLEMENTED
+            m_Search_Box.Text = "";
         }
 
         private void m_Search_Box_KeyDown(object sender, KeyEventArgs e)
         {
-            //NOT IMPLEMENTED
+            TotalTextBoxMarket.Text = "";
+            AmountTextBoxMarket.Text = "";
+            PriceTextBoxMarket.Text = "";
+            if (e.Key == Key.Enter)
+            {
+                //NOT IMPLEMENTED - Check if coin exists in the market
+                //NOT IMPLEMENTED - UpdateTheChartForSelectedCoin
+                //NOT IMPLEMENTED - UpdateTheLabelsForSelectedCoin
+            }
         }
 
         private void m_Search_Box_LostFocus(object sender, RoutedEventArgs e)
         {
-            //NOT IMPLEMENTED
+            m_Search_Box.Text = "Search for parity...";
         }
 
         private void PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            //NOT IMPLEMENTED
+            Regex regex = new Regex(@"^[0-9\.]+$");
+            e.Handled = !regex.IsMatch(e.Text);
         }
 
         private void TotalTextBoxMarket_TextChanged(object sender, TextChangedEventArgs e)
         {
-            //NOT IMPLEMENTED
+            string totalStr = TotalTextBoxMarket.Text;
+            decimal total = 0;
+            decimal amount = 0;
+            bool isNumeric = decimal.TryParse(totalStr, out total);
+            if (isNumeric && selectedCoin != "")
+            {
+                decimal price;
+                bool isPriceDecimal = decimal.TryParse(PriceTextBoxMarket.Text, out price);
+                if (isPriceDecimal)
+                {
+                    amount = total / price;
+                    AmountTextBoxMarket.Text = amount.ToString();
+                }
+            }
         }
 
         private void MarketBUYBtn_Click(object sender, RoutedEventArgs e)
         {
-            //NOT IMPLEMENTED
+            if (selectedCoin == "")
+            {
+                MessageBox.Show("Please select a coin first.");
+                return;
+            }
+            decimal num = 0;
+            if (!decimal.TryParse((TotalTextBoxMarket.Text), out num))
+            {
+                MessageBox.Show("Please enter a Total bigger than 15$.");
+                return;
+            }
+
+            if (num < 15)
+            {
+                MessageBox.Show("Please enter a Total bigger than 15$.");
+                return;
+            }
+
+            decimal amount = 0;
+            string symbol = "";
+
+            symbol = selectedCoin;
+            amount = Convert.ToDecimal(AmountTextBoxMarket.Text);
+
+            //NOT IMPLEMENTED buy with binance class and get the output as a string
+            //NOT IMPLEMENTED show the output to the user
         }
 
         private void MarketSELLBtn_Click(object sender, RoutedEventArgs e)
         {
-            //NOT IMPLEMENTED
+            if (selectedCoin == "")
+            {
+                MessageBox.Show("Please select a coin first.");
+                return;
+            }
+            decimal num = 0;
+            if (!decimal.TryParse((TotalTextBoxMarket.Text), out num))
+            {
+                MessageBox.Show("Please enter a Total bigger than 15$.");
+                return;
+            }
+
+            if (num < 15)
+            {
+                MessageBox.Show("Please enter a Total bigger than 15$.");
+                return;
+            }
+
+            decimal amount = 0;
+            string symbol = "";
+
+            symbol = selectedCoin;
+            amount = Convert.ToDecimal(AmountTextBoxMarket.Text);
+
+
+            //NOT IMPLEMENTED SELL with binance class and get the output as a string
+            //NOT IMPLEMENTED show the output to the user
         }
     }
 }
