@@ -83,5 +83,29 @@ namespace CryptoProjectGundoganDahbi
                 return errormessage;
             }
         }
+
+        public Dictionary<String, decimal> PriceHistoryOfParity(string symbol)
+        {
+            DateTime today = DateTime.Now;
+            DateTime lastmonth = DateTime.Today.AddMonths(-1);
+            Dictionary<String, decimal> priceHistory = new Dictionary<String, decimal>();
+
+            var call = _client.Spot.Market.GetKlinesAsync(symbol, Binance.Net.Enums.KlineInterval.OneDay, lastmonth, today);
+            if (call.Result.Success)
+            {
+                var rawdata = call.Result.Data;
+                foreach (var coin in rawdata)
+                {
+                    priceHistory.Add(coin.CloseTime.ToShortDateString(), coin.Close);
+                }
+                return priceHistory;
+            }
+            else
+            {
+                priceHistory.Add("Error Getting the Price History", Convert.ToDecimal("0"));
+            }
+
+            return priceHistory;
+        }
     }
 }

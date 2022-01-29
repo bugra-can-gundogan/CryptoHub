@@ -3,6 +3,14 @@ An application created with the aim of making it easier to control and observe y
 
 Changelog:
 
+29.01.2022 - Raanem Dahbi
+
+- Implemented the chart. It should now update every three seconds. 
+- !Below three seconds gives the API a timeout!
+- There is a stutter while updating and generating the coins dictionary
+- There can be adjustments on updating the yFormatter variable, coins with little value look bad on the graph sometimes.
+- In the timer_tick function I also update the price textbox below to give the most updated price.
+
 29.01.2022 bugra-gundogan
 
 - Created the BinanceRelation class which handles the following functions:

@@ -37,7 +37,72 @@ namespace CryptoProjectGundoganDahbi
 
             _bRelation = new BinanceRelation(api_key, api_secret);
             _coinsDictionary = _bRelation.BuildDictionary();
+
+            DispatcherTimer timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromSeconds(3);
+            timer.Tick += timer_Tick;
+            timer.Start();
+            buildBaseChart();
         }
+
+        private void timer_Tick(object? sender, EventArgs e)
+        {
+            if (selectedCoin != "")
+            {
+                List<decimal> coinInfos = _bRelation.UpdatePriceOfSymbol(selectedCoin);
+                CurrentPriceLabel.Content = selectedCoin + "(" + coinInfos[1] + ")" + ": " + coinInfos[0];
+                dHighLabel.Content = "Daily High: $" + coinInfos[4];
+                dLowLabel.Content = "Daily Low: $" + coinInfos[3];
+                PriceTextBoxMarket.Text = coinInfos[0].ToString();
+            }
+        }
+
+        public SeriesCollection SeriesCollection { get; set; }
+        public string[] Labels { get; set; }
+        public Func<double, string> YFormatter { get; set; }
+
+        private void buildBaseChart()
+        {
+            SeriesCollection = new SeriesCollection { };
+
+            var dates = new List<String>();
+
+            for (var dt = DateTime.Now.AddMonths(-1); dt <= DateTime.Now; dt = dt.AddDays(1))
+            {
+                dates.Add(dt.ToShortDateString());
+            }
+
+            Labels = dates.ToArray();
+
+            YFormatter = value => value.ToString("C5");
+
+            //modifying the series collection will animate and update the chart
+            SeriesCollection.Add(new LineSeries
+            {
+                Title = "Parity",
+                Values = new ChartValues<double> { },
+                LineSmoothness = 0, //0: straight lines, 1: really smooth lines
+                PointGeometry = DefaultGeometries.Diamond,
+                PointGeometrySize = 15,
+                PointForeground = Brushes.Gray
+            });
+
+            //modifying any series values will also animate and update the chart
+            //SeriesCollection[3].Values.Add(5d);
+
+            DataContext = this;
+        }
+
+        private void updateChartForSelectedCoin(string symbol)
+        {
+            _coinsDictionary<string,decimal> callforPriceHistory = _bRelation.PriceHistoryOfParity(symbol);
+            SeriesCollection[0].Values.Clear();
+            foreach (var price in coinPriceHistory.Values)
+            {
+                SeriesCollection[0].Values.Add(Convert.ToDouble(price));
+            };
+        }
+
 
         private void m_Search_Box_GotFocus(object sender, RoutedEventArgs e)
         {

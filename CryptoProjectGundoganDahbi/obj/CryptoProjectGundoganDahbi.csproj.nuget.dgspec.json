@@ -1,20 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\bugra\\source\\repos\\CryptoProjectGundoganDahbi\\CryptoProjectGundoganDahbi\\CryptoProjectGundoganDahbi.csproj": {}
+    "C:\\Users\\BugraGun\\Documents\\GitHub\\CryptoHub\\CryptoProjectGundoganDahbi\\CryptoProjectGundoganDahbi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\bugra\\source\\repos\\CryptoProjectGundoganDahbi\\CryptoProjectGundoganDahbi\\CryptoProjectGundoganDahbi.csproj": {
+    "C:\\Users\\BugraGun\\Documents\\GitHub\\CryptoHub\\CryptoProjectGundoganDahbi\\CryptoProjectGundoganDahbi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\bugra\\source\\repos\\CryptoProjectGundoganDahbi\\CryptoProjectGundoganDahbi\\CryptoProjectGundoganDahbi.csproj",
+        "projectUniqueName": "C:\\Users\\BugraGun\\Documents\\GitHub\\CryptoHub\\CryptoProjectGundoganDahbi\\CryptoProjectGundoganDahbi.csproj",
         "projectName": "CryptoProjectGundoganDahbi",
-        "projectPath": "C:\\Users\\bugra\\source\\repos\\CryptoProjectGundoganDahbi\\CryptoProjectGundoganDahbi\\CryptoProjectGundoganDahbi.csproj",
-        "packagesPath": "C:\\Users\\bugra\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\bugra\\source\\repos\\CryptoProjectGundoganDahbi\\CryptoProjectGundoganDahbi\\obj\\",
+        "projectPath": "C:\\Users\\BugraGun\\Documents\\GitHub\\CryptoHub\\CryptoProjectGundoganDahbi\\CryptoProjectGundoganDahbi.csproj",
+        "packagesPath": "C:\\Users\\BugraGun\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\BugraGun\\Documents\\GitHub\\CryptoHub\\CryptoProjectGundoganDahbi\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\bugra\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\BugraGun\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -39,16 +44,6 @@
       "frameworks": {
         "net6.0-windows7.0": {
           "targetAlias": "net6.0-windows",
-          "dependencies": {
-            "Binance.Net": {
-              "target": "Package",
-              "version": "[7.2.7, )"
-            },
-            "LiveCharts.Wpf": {
-              "target": "Package",
-              "version": "[0.9.7, )"
-            }
-          },
           "imports": [
             "net461",
             "net462",
@@ -59,15 +54,7 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "frameworkReferences": {
-            "Microsoft.NETCore.App": {
-              "privateAssets": "all"
-            },
-            "Microsoft.WindowsDesktop.App.WPF": {
-              "privateAssets": "none"
-            }
-          },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     }

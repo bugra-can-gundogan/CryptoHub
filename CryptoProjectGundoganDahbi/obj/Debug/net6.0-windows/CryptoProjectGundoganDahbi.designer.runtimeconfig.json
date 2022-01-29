@@ -1,19 +1,11 @@
 {
   "runtimeOptions": {
     "tfm": "net6.0",
-    "frameworks": [
-      {
-        "name": "Microsoft.NETCore.App",
-        "version": "6.0.0"
-      },
-      {
-        "name": "Microsoft.WindowsDesktop.App",
-        "version": "6.0.0"
-      }
-    ],
     "additionalProbingPaths": [
-      "C:\\Users\\bugra\\.dotnet\\store\\|arch|\\|tfm|",
-      "C:\\Users\\bugra\\.nuget\\packages"
+      "C:\\Users\\BugraGun\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\BugraGun\\.nuget\\packages",
+      "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+      "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
     ],
     "configProperties": {
       "Microsoft.NETCore.DotNetHostPolicy.SetAppPaths": true
