@@ -1,4 +1,7 @@
-﻿using System;
+﻿using LiveCharts;
+using LiveCharts.Defaults;
+using LiveCharts.Wpf;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -15,6 +18,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace CryptoProjectGundoganDahbi
 {
@@ -26,6 +30,7 @@ namespace CryptoProjectGundoganDahbi
         String selectedCoin = "";
         BinanceRelation _bRelation;
         Dictionary<String, decimal> _coinsDictionary = new Dictionary<String, decimal>();
+        Dictionary<String, decimal> ownedCoins = new Dictionary<String, decimal>();
         public MainWindow()
         {
             InitializeComponent();
@@ -44,6 +49,23 @@ namespace CryptoProjectGundoganDahbi
             timer.Tick += timer_Tick;
             timer.Start();
             buildBaseChart();
+            BuildWalletChart();
+            List<Coin> coins = new List<Coin>();
+            foreach (var item in ownedCoins)
+            {
+                if (_coinsDictionary.ContainsKey(item.Key + "USDT"))
+                {
+                    coins.Add(new Coin()
+                    {
+                        Name = item.Key,
+                        Price = _coinsDictionary[item.Key + "USDT"],
+                        Quantity = item.Value,
+                        Total = item.Value * _coinsDictionary[item.Key + "USDT"]
+                    });
+                }
+            }
+            AllCoinsDataGrid.ItemsSource = null;
+            AllCoinsDataGrid.ItemsSource = coins;
         }
 
         private void timer_Tick(object? sender, EventArgs e)
@@ -96,9 +118,9 @@ namespace CryptoProjectGundoganDahbi
 
         private void updateChartForSelectedCoin(string symbol)
         {
-            _coinsDictionary<string,decimal> callforPriceHistory = _bRelation.PriceHistoryOfParity(symbol);
+            Dictionary<string,decimal> callforPriceHistory = _bRelation.PriceHistoryOfParity(symbol);
             SeriesCollection[0].Values.Clear();
-            foreach (var price in coinPriceHistory.Values)
+            foreach (var price in callforPriceHistory.Values)
             {
                 SeriesCollection[0].Values.Add(Convert.ToDouble(price));
             };
@@ -234,9 +256,9 @@ namespace CryptoProjectGundoganDahbi
 
             foreach (var coin in ownedCoins)
             {
-                if (marketCoins.ContainsKey(coin.Key + "USDT"))
+                if (_coinsDictionary.ContainsKey(coin.Key + "USDT"))
                 {
-                    double totalValOfCoin = Convert.ToDouble(marketCoins[coin.Key + "USDT"] * coin.Value);
+                    double totalValOfCoin = Convert.ToDouble(_coinsDictionary[coin.Key + "USDT"] * coin.Value);
                     if (totalValOfCoin > 10)
                     {
                         WalletSeriesCollection.Add(new PieSeries

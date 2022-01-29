@@ -1,8 +1,36 @@
 {
   "version": 2,
-  "dgSpecHash": "cafKzvunbskUWUhR2OjRCHf2oKxcyczO/WT1v0g/6qAM22Rvz9ZePDAK4GH/QlHqfKd04Z1gHKzrpHbGY6jmhA==",
+  "dgSpecHash": "VaUmN+zhBNsI8zwIrnVnLCqNVCHnw9TH2m95c0WlgDzXMjsirSgaWP18llMHwH2KwJDHXEyi+gS3/lRNQl+1SQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\BugraGun\\Documents\\GitHub\\CryptoHub\\CryptoProjectGundoganDahbi\\CryptoProjectGundoganDahbi.csproj",
-  "expectedPackageFiles": [],
-  "logs": []
+  "projectFilePath": "C:\\Users\\bugra\\source\\repos\\CryptoProjectGundoganDahbi\\CryptoProjectGundoganDahbi\\CryptoProjectGundoganDahbi.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\bugra\\.nuget\\packages\\binance.net\\7.2.7\\binance.net.7.2.7.nupkg.sha512",
+    "C:\\Users\\bugra\\.nuget\\packages\\cryptoexchange.net\\4.2.8\\cryptoexchange.net.4.2.8.nupkg.sha512",
+    "C:\\Users\\bugra\\.nuget\\packages\\livecharts\\0.9.7\\livecharts.0.9.7.nupkg.sha512",
+    "C:\\Users\\bugra\\.nuget\\packages\\livecharts.wpf\\0.9.7\\livecharts.wpf.0.9.7.nupkg.sha512",
+    "C:\\Users\\bugra\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\3.1.0\\microsoft.extensions.logging.abstractions.3.1.0.nupkg.sha512",
+    "C:\\Users\\bugra\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512"
+  ],
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'LiveCharts 0.9.7' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0-windows7.0'. This package may not be fully compatible with your project.",
+      "libraryId": "LiveCharts",
+      "targetGraphs": [
+        "net6.0-windows7.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'LiveCharts.Wpf 0.9.7' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0-windows7.0'. This package may not be fully compatible with your project.",
+      "libraryId": "LiveCharts.Wpf",
+      "targetGraphs": [
+        "net6.0-windows7.0"
+      ]
+    }
+  ]
 }

@@ -3,6 +3,17 @@ An application created with the aim of making it easier to control and observe y
 
 Changelog:
 
+29.02.2022 - Buğra Gündoğan Build v0.1
+
+- Fixed some errors with charts.
+- Removed CryptoBot Tab.
+- Removed some informative labels in the wallet tab.
+- Implemented the datagrid in the wallet tab.
+- The datagrid holds all owned coins, their price, their total value, and the volume held by the user.
+
+  Note: This will be the first build. I removed the CB Tab and labels in wallet tab because those tabs will require us to make more calls to the API. First we will need to address this freezing issue. Also CryptoBot seems to be more difficult to build in C# because of the TA library. Next build will feature the CryptoBot, a new User Interface and a fluent user interface.
+
+
 29.01.2022 - Raanem Dahbi - 2
 
 - Implemented the chart for wallet.
