@@ -37,6 +37,7 @@ namespace CryptoProjectGundoganDahbi
 
             _bRelation = new BinanceRelation(api_key, api_secret);
             _coinsDictionary = _bRelation.BuildDictionary();
+            ownedCoins = _bRelation.getWalletData();
 
             DispatcherTimer timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromSeconds(3);
@@ -224,6 +225,38 @@ namespace CryptoProjectGundoganDahbi
             CurrentPriceLabel.Content = symbol + "(%" + coinInfos[1] + ")" + ": " + coinInfos[0];
             dHighLabel.Content = "Daily High: $" + coinInfos[4];
             dLowLabel.Content = "Daily Low: $" + coinInfos[3];
+        }
+
+        public SeriesCollection WalletSeriesCollection { get; set; }
+        private void BuildWalletChart()
+        {
+            WalletSeriesCollection = new SeriesCollection { };
+
+            foreach (var coin in ownedCoins)
+            {
+                if (marketCoins.ContainsKey(coin.Key + "USDT"))
+                {
+                    double totalValOfCoin = Convert.ToDouble(marketCoins[coin.Key + "USDT"] * coin.Value);
+                    if (totalValOfCoin > 10)
+                    {
+                        WalletSeriesCollection.Add(new PieSeries
+                        {
+                            Title = coin.Key,
+                            Values = new ChartValues<ObservableValue> { new ObservableValue(totalValOfCoin) },
+                            DataLabels = true
+                        });
+                    }
+                }
+            }
+            DataContext = this;
+        }
+        public class Coin
+        {
+            public string Name { get; set; }
+            public decimal Price { get; set; }
+            public decimal Quantity { get; set; }
+            public decimal Total { get; set; }
+
         }
     }
 }

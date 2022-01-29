@@ -3,6 +3,15 @@ An application created with the aim of making it easier to control and observe y
 
 Changelog:
 
+29.01.2022 - Raanem Dahbi - 2
+
+- Implemented the chart for wallet.
+- Wallet chart gets the all assets and their prices, and how much the user owns, and draws the graph.
+- Implemented necessary functions for wallet chart in mainwindow.xaml.cs and BinanceRelation class.
+
+  Note: Wallet chart doesn't get updated for now. It should be updated just like in the market. But right now updating it freezes the User Interface too much. 
+
+
 29.01.2022 - Raanem Dahbi
 
 - Implemented the chart. It should now update every three seconds. 

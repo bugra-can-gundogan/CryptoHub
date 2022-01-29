@@ -107,5 +107,21 @@ namespace CryptoProjectGundoganDahbi
 
             return priceHistory;
         }
+
+        public  Dictionary<string, decimal> getWalletData()
+        {
+            var callforWalletInfo = _client.General.GetAccountInfoAsync();
+            Dictionary<string, decimal> coinsOwnedDictionary = new Dictionary<string, decimal>();
+
+            foreach (var item in callforWalletInfo.Result.Data.Balances)
+            {
+                if (item.Free > 0)
+                {
+                    coinsOwnedDictionary.Add(item.Asset, item.Free);
+                }
+            }
+
+            return coinsOwnedDictionary;
+        }
     }
 }
