@@ -3,7 +3,26 @@ An application created with the aim of making it easier to control and observe y
 
 Changelog:
 
-29.02.2022 - Buğra Gündoğan Build v0.1
+30.01.2022 - Build v0.2 - Buğra Gündoğan & Raanem Dahbi
+
+  - User Interface overhaul
+  - CryptoBot implementation, CryptoBot is now a python program openned from WPF as a process
+  - Coins can now be added to the watch list
+  - Coins that are watched are added to the database with the DatabaseRelation class.
+  - Every single function in BinanceRelation is now a Task with a result. UI freeze is solved.
+
+  Issues to be addressed:
+  - Color selection for UI
+  - The database should be changed with something like SharedPreferences in Android dev. Right now MSSQL is an overkill.
+  - Python path should either be fetched from user via input or incorporated into the program in some way.
+  - Hover state colors for bottons.
+  - Quit button functionality.
+  - Login screen for user to enter their API_key and API_secret.
+  - Login screen should be the startup window.
+
+
+
+29.01.2022 - Buğra Gündoğan Build v0.1
 
 - Fixed some errors with charts.
 - Removed CryptoBot Tab.

@@ -1,0 +1,40 @@
+﻿<UserControl x:Class="CryptoHub.MVVM.View.CryptoBotView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CryptoHub.MVVM.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="700" d:DesignWidth="800">
+    <Grid Background="BlueViolet">
+        <StackPanel Margin="0,50,0,0" Orientation="Vertical" Width="600">
+            <DockPanel Width="200">
+                <Label Content="Value in USDT to use:"></Label>
+                <TextBox Name="ValueAllowedByUserLBL" Width="60" HorizontalAlignment="Right" PreviewTextInput="PreviewTextInput"></TextBox>
+            </DockPanel>
+            <DockPanel Width="200">
+                <Label Content="Coin to trade:"></Label>
+                <TextBox Name="ParityWantedToTradeLBL" Width="60" HorizontalAlignment="Right"></TextBox>
+            </DockPanel>
+            <DockPanel Width="300">
+                <Button HorizontalAlignment="Left" Name="runBotBtn" Content="RUN" Width="80" Margin="30" Click="Button_Click"></Button>
+                <Button HorizontalAlignment="Right" Name="stopBotBtn" Content="STOP" Width="80" Margin="30" Click="stopBotBtn_Click"></Button>
+            </DockPanel>
+            <StackPanel Orientation="Vertical" Margin="0,10,0,0">
+                <Label Content="Activity Logs:"></Label>
+                <DataGrid Name="ActivityDataGrid" CanUserAddRows="False" Width="600" Height="300"
+                          HorizontalAlignment="Stretch" 
+                          HorizontalContentAlignment="Stretch"></DataGrid>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" Margin="0,10,0,0">
+                <Label Content="Summary:"></Label>
+                <StackPanel Orientation="Vertical">
+                    <Label Content="Started with"></Label>
+                    <Label Content="Profit:"></Label>
+                </StackPanel>
+            </StackPanel>
+
+        </StackPanel>
+    </Grid>
+
+</UserControl>
