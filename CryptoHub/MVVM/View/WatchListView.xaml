@@ -6,12 +6,12 @@
              xmlns:local="clr-namespace:CryptoHub.MVVM.View"
              mc:Ignorable="d" 
              d:DesignHeight="700" d:DesignWidth="800">
-    <Grid Background="Transparent">
+    <Grid Background="Black">
         <StackPanel Orientation="Vertical">
-            <DataGrid CanUserAddRows="False"  Width="800" Height="600" Style="{StaticResource ModernDataGrid}" x:Name="McDataGrid"></DataGrid>
-            <DockPanel Width="800" Margin="0,40,0,0">
-                <Button Name="WatchListRefreshBtn" Content="Refresh" Width="100"  Height="40" HorizontalAlignment="Left" Click="WatchListRefreshBtn_Click"></Button>
-                <Button Name="WatchlistRemoveBtn" Content="Remove" Width="100" Height="40" HorizontalAlignment="Right" Click="WatchlistRemoveBtn_Click"></Button>
+            <DataGrid CanUserAddRows="False" Margin="0,40,0,0"  Width="600" Height="560" Style="{StaticResource ModernDataGrid}" x:Name="McDataGrid"></DataGrid>
+            <DockPanel Width="600" Margin="0,40,0,0">
+                <Button Background="#519872" FontSize="20" BorderThickness="0" Foreground="#EEEEEE" Name="WatchListRefreshBtn" Content="Refresh" Width="100"  Height="40" HorizontalAlignment="Left" Click="WatchListRefreshBtn_Click"></Button>
+                <Button Background="#900C3F" FontSize="20" BorderThickness="0" Foreground="#EEEEEE" Name="WatchlistRemoveBtn" Content="Remove" Width="100" Height="40" HorizontalAlignment="Right" Click="WatchlistRemoveBtn_Click"></Button>
             </DockPanel>
         </StackPanel>
     </Grid>

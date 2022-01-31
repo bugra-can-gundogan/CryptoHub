@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:CryptoHub.MVVM.View" xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf" 
              mc:Ignorable="d" 
              d:DesignHeight="700" d:DesignWidth="900">
-    <Grid Background="AliceBlue">
+    <Grid Background="#171717">
         <Grid.RowDefinitions>
             <RowDefinition Height="75"/>
             <RowDefinition/>
@@ -34,42 +34,42 @@
                      KeyDown="m_Search_Box_KeyDown" GotFocus="m_Search_Box_GotFocus" LostFocus="m_Search_Box_LostFocus"></TextBox>
                 </Grid>
             </Border>
-            <DockPanel Width="670">
-                <Label FontFamily="/Fonts/#Poppins" Name="CurrentPriceLabel" VerticalContentAlignment="Center" Content="---" Margin="15 0 0 0"></Label>
-                <Label Name="dHighLabel" VerticalContentAlignment="Center" Content="Daily High:---"></Label>
-                <Label Name="dLowLabel" VerticalContentAlignment="Center" Content="Daily Low:---"></Label>
+            <DockPanel Width="680">
+                <Label Foreground="#EDEDED" FontFamily="/Fonts/#Poppins" Name="CurrentPriceLabel" VerticalContentAlignment="Center" Content="---" Margin="15 0 0 0"></Label>
+                <Label Foreground="#EDEDED" Name="dHighLabel" VerticalContentAlignment="Center" Content="Daily High:---"></Label>
+                <Label Foreground="#EDEDED" Name="dLowLabel" VerticalContentAlignment="Center" Content="Daily Low:---"></Label>
                 <Button Content="Add to Wacth List" Style="{StaticResource MuhStyle}" HorizontalAlignment="Right" Click="Button_Click"/>
             </DockPanel>
            
         </StackPanel>
-        <lvc:CartesianChart Grid.Row="1" Series="{Binding SeriesCollection}" LegendLocation="Right">
+        <lvc:CartesianChart Grid.Row="1" Series="{Binding SeriesCollection}" LegendLocation="None">
             <lvc:CartesianChart.AxisY>
-                <lvc:Axis Title="Price(USDT)" LabelFormatter="{Binding YFormatter}"></lvc:Axis>
+                <lvc:Axis Title="Price(USDT)" Foreground="#EDEDED" LabelFormatter="{Binding YFormatter}"></lvc:Axis>
             </lvc:CartesianChart.AxisY>
             <lvc:CartesianChart.AxisX>
-                <lvc:Axis Title="Date" Labels="{Binding Labels}"></lvc:Axis>
+                <lvc:Axis Title="Date" Foreground="#EDEDED" Labels="{Binding Labels}"></lvc:Axis>
             </lvc:CartesianChart.AxisX>
         </lvc:CartesianChart>
         <DockPanel Grid.Row="2" Width="600">
             <StackPanel Orientation="Vertical" Margin="10,50,0,0">
                 <DockPanel  Margin="0 3"  Width="200">
-                    <Label Content="Trade Type:           MARKET"></Label>
+                    <Label Foreground="#EDEDED" Content="Trade Type:           MARKET"></Label>
                 </DockPanel>
                 <DockPanel Margin="0 3"   Width="200">
-                    <Label Content="Price(USD):"></Label>
+                    <Label Foreground="#EDEDED" Content="Price(USD):"></Label>
                     <TextBox  Name="PriceTextBoxMarket"  IsReadOnly="True" Width="100" HorizontalAlignment="Right"></TextBox>
                 </DockPanel>
                 <DockPanel Margin="0 3"   Width="200">
-                    <Label Content="Amount:"></Label>
+                    <Label Foreground="#EDEDED" Content="Amount:"></Label>
                     <TextBox Name="AmountTextBoxMarket" IsReadOnly="True"  Width="100" HorizontalAlignment="Right"></TextBox>
                 </DockPanel>
                 <DockPanel  Margin="0 3"  Width="200">
-                    <Label Content="Total(USD):"></Label>
+                    <Label Foreground="#EDEDED" Content="Total(USD):"></Label>
                     <TextBox Name="TotalTextBoxMarket" PreviewTextInput="PreviewTextInput" Width="100" HorizontalAlignment="Right" TextChanged="TotalTextBoxMarket_TextChanged"></TextBox>
                 </DockPanel>
                 <DockPanel  Margin="0 10"  Width="200">
-                    <Button Name="MarketBUYBtn" Content="BUY" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Width="60" Height="30" FontSize="18" FontFamily="Gill Sans MT" BorderThickness="0" Background="#519872" Foreground="#000000" Click="MarketBUYBtn_Click"></Button>
-                    <Button Name="MarketSELLBtn" Content="SELL" HorizontalAlignment="Right" HorizontalContentAlignment="Center" Width="60" Height="30" FontSize="18" FontFamily="Gill Sans MT" BorderThickness="0" Background="#DA0037" Foreground="#000000" Click="MarketSELLBtn_Click"></Button>
+                    <Button Name="MarketBUYBtn" Content="BUY" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Width="60" Height="30" FontSize="18" FontFamily="Gill Sans MT" BorderThickness="0" Background="#519872" Foreground="#EDEDED" Click="MarketBUYBtn_Click"></Button>
+                    <Button Name="MarketSELLBtn" Content="SELL" HorizontalAlignment="Right" HorizontalContentAlignment="Center" Width="60" Height="30" FontSize="18" FontFamily="Gill Sans MT" BorderThickness="0" Background="#DA0037" Foreground="#EDEDED" Click="MarketSELLBtn_Click"></Button>
                 </DockPanel>
             </StackPanel>
         </DockPanel>

@@ -29,7 +29,8 @@
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="btnBorder" Property="Background" Value="Blue"></Setter>
+                            <Setter TargetName="btnBorder" Property="Background" Value="#D3DEDC"></Setter>
+                            <Setter Property="Foreground" Value="Black"></Setter>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

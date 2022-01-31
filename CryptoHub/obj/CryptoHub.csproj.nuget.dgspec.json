@@ -1,20 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\bugra\\OneDrive\\Belgeler\\GitHub\\CryptoHub\\CryptoHub\\CryptoHub.csproj": {}
+    "C:\\Users\\BugraGun\\Documents\\GitHub\\CryptoHub\\CryptoHub\\CryptoHub.csproj": {}
   },
   "projects": {
-    "C:\\Users\\bugra\\OneDrive\\Belgeler\\GitHub\\CryptoHub\\CryptoHub\\CryptoHub.csproj": {
+    "C:\\Users\\BugraGun\\Documents\\GitHub\\CryptoHub\\CryptoHub\\CryptoHub.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\bugra\\OneDrive\\Belgeler\\GitHub\\CryptoHub\\CryptoHub\\CryptoHub.csproj",
+        "projectUniqueName": "C:\\Users\\BugraGun\\Documents\\GitHub\\CryptoHub\\CryptoHub\\CryptoHub.csproj",
         "projectName": "CryptoHub",
-        "projectPath": "C:\\Users\\bugra\\OneDrive\\Belgeler\\GitHub\\CryptoHub\\CryptoHub\\CryptoHub.csproj",
-        "packagesPath": "C:\\Users\\bugra\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\bugra\\OneDrive\\Belgeler\\GitHub\\CryptoHub\\CryptoHub\\obj\\",
+        "projectPath": "C:\\Users\\BugraGun\\Documents\\GitHub\\CryptoHub\\CryptoHub\\CryptoHub.csproj",
+        "packagesPath": "C:\\Users\\BugraGun\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\BugraGun\\Documents\\GitHub\\CryptoHub\\CryptoHub\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\bugra\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\BugraGun\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -39,28 +44,6 @@
       "frameworks": {
         "net6.0-windows7.0": {
           "targetAlias": "net6.0-windows",
-          "dependencies": {
-            "Binance.Net": {
-              "target": "Package",
-              "version": "[7.2.7, )"
-            },
-            "DotNetProjects.WpfToolkit.Input": {
-              "target": "Package",
-              "version": "[6.1.94, )"
-            },
-            "LiveCharts.Wpf": {
-              "target": "Package",
-              "version": "[0.9.7, )"
-            },
-            "System.Data.SQLite": {
-              "target": "Package",
-              "version": "[1.0.115.5, )"
-            },
-            "System.Data.SqlClient": {
-              "target": "Package",
-              "version": "[4.8.3, )"
-            }
-          },
           "imports": [
             "net461",
             "net462",
@@ -71,15 +54,7 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "frameworkReferences": {
-            "Microsoft.NETCore.App": {
-              "privateAssets": "all"
-            },
-            "Microsoft.WindowsDesktop.App.WPF": {
-              "privateAssets": "none"
-            }
-          },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     }

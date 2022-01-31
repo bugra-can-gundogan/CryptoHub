@@ -3,6 +3,22 @@ An application created with the aim of making it easier to control and observe y
 
 Changelog:
 
+31.01.2022 - Raanem Dahbi
+
+  - Fixed some typos.
+  - Changed the colors of UI. Colors of charts.
+  - Created the hover effect for some buttons.
+  
+  Note: I am working on quit and login right now.
+
+  Issues to be addressed:
+  - Python path should either be fetched from user via input or incorporated into the program in some way.
+  - Quit button functionality.
+  - Login screen for user to enter their API_key and API_secret.
+  - Login screen should be the startup window.
+
+
+
 31.01.2022 - Buğra Gündoğan
 
   - Fixed some errors regarding the CryptoBot
