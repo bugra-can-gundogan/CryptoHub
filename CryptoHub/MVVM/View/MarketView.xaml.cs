@@ -28,7 +28,7 @@ namespace CryptoHub.MVVM.View
     {
         //Dictionary<String, decimal> _coinsDictionary = new Dictionary<String, decimal>();
         BinanceRelation _bRelation;
-        DatabaseRelationship _dRelation;
+        SQLiteRelation _dRelation;
         String selectedCoin = "";
         public MarketView()
         {
@@ -37,11 +37,11 @@ namespace CryptoHub.MVVM.View
             CultureInfo USCulture = new CultureInfo("en-US");
             Thread.CurrentThread.CurrentCulture = USCulture;
 
-            string api_key = "";
-            string api_secret = "";
+            string api_key = CryptoBotController.original_Api_Key;
+            string api_secret = CryptoBotController.original_Api_Secret;
 
             _bRelation = new BinanceRelation(api_key, api_secret);
-            _dRelation = new DatabaseRelationship();
+            _dRelation = new SQLiteRelation();
             //_coinsDictionary = _bRelation.BuildDictionary();
             //_coinsDictionary = CryptoBotController.coinsInTheMarket;
 

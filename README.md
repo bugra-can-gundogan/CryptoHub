@@ -3,6 +3,23 @@ An application created with the aim of making it easier to control and observe y
 
 Changelog:
 
+31.01.2022 - Buğra Gündoğan
+
+  - Fixed some errors regarding the CryptoBot
+  - Changed the SQL database with SQLite.
+  - There is now a new class called SQLiteRelation that handles all database functionalities.
+  - DatabaseRelation class is still there but will be deleted before the next build.
+  - API key and secret is now held in a public static class, this will make it easier to make a login screen and fetch those variables from there via input.
+
+  Issues to be addressed:
+  - Color selection for UI
+  - Python path should either be fetched from user via input or incorporated into the program in some way.
+  - Hover state colors for bottons.
+  - Quit button functionality.
+  - Login screen for user to enter their API_key and API_secret.
+  - Login screen should be the startup window.
+
+
 30.01.2022 - Build v0.2 - Buğra Gündoğan & Raanem Dahbi
 
   - User Interface overhaul

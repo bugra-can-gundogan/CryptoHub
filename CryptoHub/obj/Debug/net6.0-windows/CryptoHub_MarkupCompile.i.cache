@@ -4,17 +4,17 @@
 exe
 C#
 .cs
-C:\Users\bugra\source\repos\CryptoHub\CryptoHub\obj\Debug\net6.0-windows\
+C:\Users\bugra\OneDrive\Belgeler\GitHub\CryptoHub\CryptoHub\obj\Debug\net6.0-windows\
 CryptoHub
 none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
-C:\Users\bugra\source\repos\CryptoHub\CryptoHub\App.xaml
+C:\Users\bugra\OneDrive\Belgeler\GitHub\CryptoHub\CryptoHub\App.xaml
 10-291830009
 
-21-1807256943
-202-914725142
+22209332529
+2061447297528
 MainWindow.xaml;MVVM\View\CryptoBotView.xaml;MVVM\View\MarketView.xaml;MVVM\View\WalletView.xaml;MVVM\View\WatchListView.xaml;Theme\FinalSearchBox.xaml;Theme\MenuButtonTheme.xaml;Theme\ModernDataGrid.xaml;Theme\MuhControlButtons.xaml;Theme\SearchBoxTheme.xaml;
 
-True
+False
 

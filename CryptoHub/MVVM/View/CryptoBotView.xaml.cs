@@ -71,8 +71,8 @@ namespace CryptoHub.MVVM.View
                 return;
             }
 
-            string api_key = "";
-            string api_secret = "";
+            string api_key = CryptoBotController.original_Api_Key;
+            string api_secret = CryptoBotController.original_Api_Secret;
 
             BinanceRelation binanceRelation = new BinanceRelation(api_key, api_secret);
             Dictionary<string,decimal> coinsInMarket = binanceRelation.BuildDictionary();

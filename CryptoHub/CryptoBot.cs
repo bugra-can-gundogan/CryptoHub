@@ -38,6 +38,8 @@ namespace CryptoHub
         public static string runPythonBot(string parity, decimal quantity, bool open_position = false, decimal buyprice = 0)
         {
             string result = string.Empty;
+            api_key = CryptoBotController.original_Api_Key;
+            api_secret = CryptoBotController.original_Api_Secret;
             string args = api_key + " " + api_secret;
             try
             {

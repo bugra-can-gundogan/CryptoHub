@@ -20,12 +20,12 @@ namespace CryptoHub.MVVM.View
     /// </summary>
     public partial class WatchListView : UserControl
     {
-        public DatabaseRelationship dr;
+        public SQLiteRelation dr;
         public List<Tuple<int, string, DateTime, decimal>> watchListCoinsList = new List<Tuple<int, string, DateTime, decimal>>();
         public WatchListView()
         {
             InitializeComponent();
-            dr = new DatabaseRelationship();
+            dr = new SQLiteRelation();
             watchListCoinsList = dr.ReadWatchListTable();
             McDataGrid.ItemsSource = LoadCollectionData();
         }

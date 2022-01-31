@@ -27,16 +27,19 @@ namespace CryptoHub
         public ObservableCollection<CryptoViewDataGridRowClass> datagridBindedCollection;
         DispatcherTimer timer = new DispatcherTimer();
         public string parity = "";
-        public string api_key = "";
-        public string api_secret = "";
+        public string api_key = CryptoBotController.original_Api_Key;
+        public string api_secret = CryptoBotController.original_Api_Secret;
         public decimal quantity = 0;
         public decimal buyprice = 0;
         public bool open_pos = false;
-        public BinanceRelation binanceRelation = new BinanceRelation("", "");
+        public BinanceRelation binanceRelation;
 
         public MainWindow()
         {
             InitializeComponent();
+            SQLiteRelation sqlRel = new SQLiteRelation();
+            sqlRel.CreateTable();
+            binanceRelation = new BinanceRelation(api_key, api_secret);
             var callforAllCoinsInTheMarket = binanceRelation.BuildDictionaryTask().GetAwaiter();
             callforAllCoinsInTheMarket.OnCompleted(() =>
             {

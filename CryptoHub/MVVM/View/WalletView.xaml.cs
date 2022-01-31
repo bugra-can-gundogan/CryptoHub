@@ -35,8 +35,8 @@ namespace CryptoHub.MVVM.View
             CultureInfo USCulture = new CultureInfo("en-US");
             Thread.CurrentThread.CurrentCulture = USCulture;
 
-            string api_key = "";
-            string api_secret = "";
+            string api_key = CryptoBotController.original_Api_Key;
+            string api_secret = CryptoBotController.original_Api_Secret;
 
             _bRelation = new BinanceRelation(api_key, api_secret);
             ownedCoins = CryptoBotController.ownedCoinsByUser;

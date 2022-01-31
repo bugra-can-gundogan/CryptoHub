@@ -13,5 +13,7 @@ namespace CryptoHub
         public static string parityLabel = "";
         public static Dictionary<string,decimal> coinsInTheMarket = new Dictionary<string,decimal>();
         public static Dictionary<string, decimal> ownedCoinsByUser = new Dictionary<string, decimal>();
+        public static string original_Api_Key = "";
+        public static string original_Api_Secret = "";
     }
 }
