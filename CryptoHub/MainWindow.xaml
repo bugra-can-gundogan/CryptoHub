@@ -72,7 +72,7 @@
                             Width="942"
                             Height="73"
                             Margin="10 0 30 30" MouseDown="Mover_MouseDown" MouseEnter="Mover_MouseEnter" MouseLeave="Mover_MouseLeave"></Border>
-                <Button Content="Quit" Style="{StaticResource MuhStyle}" Margin="3"></Button>
+                <Button Name="QuitButton" Content="Quit" Style="{StaticResource MuhStyle}" Margin="3" Click="QuitButton_Click"></Button>
             </StackPanel>
 
             <ContentControl Grid.Row="1"

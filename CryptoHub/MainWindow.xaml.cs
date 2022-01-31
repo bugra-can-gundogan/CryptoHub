@@ -151,5 +151,10 @@ namespace CryptoHub
             Cursor = Cursors.Arrow;
             
         }
+
+        private void QuitButton_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
     }
 }

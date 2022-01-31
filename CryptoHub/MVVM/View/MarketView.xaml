@@ -15,7 +15,7 @@
 
         <StackPanel Orientation="Horizontal" Grid.Row="0">
             <Border CornerRadius="10"
-                            Background="#353340"
+                            Background="#EDEDED"
                             Width="200"
                             Height="40"
                             Margin="15 0 0 0">
@@ -28,7 +28,7 @@
                      Padding="5"
                      Text="Search for parity..."
                      Background="Transparent"
-                     Foreground="#CFCFCF"
+                     Foreground="#171717"
                      FontFamily="/Fonts/#Poppins"
                      BorderThickness="0"
                      KeyDown="m_Search_Box_KeyDown" GotFocus="m_Search_Box_GotFocus" LostFocus="m_Search_Box_LostFocus"></TextBox>
@@ -57,11 +57,11 @@
                 </DockPanel>
                 <DockPanel Margin="0 3"   Width="200">
                     <Label Foreground="#EDEDED" Content="Price(USD):"></Label>
-                    <TextBox  Name="PriceTextBoxMarket"  IsReadOnly="True" Width="100" HorizontalAlignment="Right"></TextBox>
+                    <TextBox Background="LightGray" Name="PriceTextBoxMarket"  IsReadOnly="True" Width="100" HorizontalAlignment="Right"></TextBox>
                 </DockPanel>
                 <DockPanel Margin="0 3"   Width="200">
                     <Label Foreground="#EDEDED" Content="Amount:"></Label>
-                    <TextBox Name="AmountTextBoxMarket" IsReadOnly="True"  Width="100" HorizontalAlignment="Right"></TextBox>
+                    <TextBox Background="LightGray" Name="AmountTextBoxMarket" IsReadOnly="True"  Width="100" HorizontalAlignment="Right"></TextBox>
                 </DockPanel>
                 <DockPanel  Margin="0 3"  Width="200">
                     <Label Foreground="#EDEDED" Content="Total(USD):"></Label>

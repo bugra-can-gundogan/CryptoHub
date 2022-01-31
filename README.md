@@ -3,6 +3,18 @@ An application created with the aim of making it easier to control and observe y
 
 Changelog:
 
+31.01.2022 - Raanem Dahbi(2)
+  
+  -Quit button functionality.
+  -Login screen as startup window is ready and working.
+  -Login screen checks if api is correct as well in a task, if it is correct it sends the user to the MainWindow.
+
+  Issues to be addressed:
+  - Python path should either be fetched from user via input or incorporated into the program in some way.
+  - Cleaning classes and functions that are no longer used.
+  - Some error during buy/sell process. "LOT SIZE Filter - 1303"
+
+
 31.01.2022 - Raanem Dahbi
 
   - Fixed some typos.

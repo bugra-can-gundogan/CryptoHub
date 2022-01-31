@@ -5,7 +5,7 @@
              xmlns:viewModel ="clr-namespace:CryptoHub.MVVM.ViewModel"
              xmlns:view="clr-namespace:CryptoHub.MVVM.View"
              xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
-             StartupUri="MainWindow.xaml">
+             StartupUri="LoginWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>

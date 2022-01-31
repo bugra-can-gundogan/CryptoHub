@@ -138,7 +138,11 @@ namespace CryptoHub
         {
             var callforWalletInfo = await _client.General.GetAccountInfoAsync();
             Dictionary<string, decimal> coinsOwnedDictionary = new Dictionary<string, decimal>();
-
+            if (!callforWalletInfo.Success)
+            {
+                string error = callforWalletInfo.Error.Message;
+                Console.WriteLine(error);
+            }
             foreach(var item in callforWalletInfo.Data.Balances)
             {
                 if (item.Free > 0)

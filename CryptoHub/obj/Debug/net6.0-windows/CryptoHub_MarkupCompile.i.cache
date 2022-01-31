@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 C:\Users\bugra\OneDrive\Belgeler\GitHub\CryptoHub\CryptoHub\App.xaml
-10-291830009
+11-1915528825
 
-22209332529
+23-401973462
 2061447297528
-MainWindow.xaml;MVVM\View\CryptoBotView.xaml;MVVM\View\MarketView.xaml;MVVM\View\WalletView.xaml;MVVM\View\WatchListView.xaml;Theme\FinalSearchBox.xaml;Theme\MenuButtonTheme.xaml;Theme\ModernDataGrid.xaml;Theme\MuhControlButtons.xaml;Theme\SearchBoxTheme.xaml;
+LoginWindow.xaml;MainWindow.xaml;MVVM\View\CryptoBotView.xaml;MVVM\View\MarketView.xaml;MVVM\View\WalletView.xaml;MVVM\View\WatchListView.xaml;Theme\FinalSearchBox.xaml;Theme\MenuButtonTheme.xaml;Theme\ModernDataGrid.xaml;Theme\MuhControlButtons.xaml;Theme\SearchBoxTheme.xaml;
 
 False
 
