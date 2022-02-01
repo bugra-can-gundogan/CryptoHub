@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -68,19 +69,54 @@ namespace CryptoHub
         }
         private void timer_Tick(object? sender, EventArgs e)
         {
-            string x = RunPythonBot();
-            datagridBindedCollection.Add(
-                new CryptoViewDataGridRowClass() { Date=DateTime.Now, Messagge= x});
-            Console.WriteLine(x);
+            var x = RunPythonBot().GetAwaiter();
+            x.OnCompleted(() =>
+            {
+                datagridBindedCollection.Add(
+                new CryptoViewDataGridRowClass() { Date = DateTime.Now, Messagge = x.GetResult() });
+            });
+            
             //((MainWindow)Application.Current.MainWindow)
 
         }
 
-        private string RunPythonBot()
+        /*private async Task<string> RunPythonBotWithoutStutter()
+        {
+            var tcs = new TaskCompletionSource<int>();
+
+            string result = string.Empty;
+            string argos = api_key + " " + api_secret + " " + quantity + " " + parity + " " + buyprice.ToString();
+
+            var process = new Process
+            {
+                StartInfo =
+                {
+                    FileName = CryptoBotController.pythonPath,
+                    UseShellExecute = false,
+                    Arguments = string.Format("{0} {1}", "Selling.Py", "") + argos,
+                    RedirectStandardOutput = true
+                },
+                EnableRaisingEvents = true
+            };
+
+            process.Exited += (sender, args) =>
+            {
+                tcs.SetResult(process.);
+                process.Dispose();
+            };
+
+            process.Start();
+
+            return tcs.Task;
+
+        }*/
+
+        private async Task<string> RunPythonBot()
         {
             string output = "None";
             string result = string.Empty;
             string args = api_key + " " + api_secret + " " + quantity + " " + parity + " " + buyprice.ToString();
+           
 
             try
             {
@@ -88,13 +124,13 @@ namespace CryptoHub
                 {
                     using (Process process = new Process())
                     {
-                        process.StartInfo.FileName = @"C:\Frameworks\Python\Python310\python.exe";
+                        process.StartInfo.FileName = CryptoBotController.pythonPath;
                         process.StartInfo.UseShellExecute = false;
                         process.StartInfo.Arguments = string.Format("{0} {1}", "Selling.Py", "") + args;
                         process.StartInfo.RedirectStandardOutput = true;
                         process.Start();
 
-                        process.WaitForExit();
+                        await process.WaitForExitAsync();
                         if (process.ExitCode == 0)
                         {
                             result = process.StandardOutput.ReadToEnd();
@@ -107,13 +143,13 @@ namespace CryptoHub
                 {
                     using (Process process = new Process())
                     {
-                        process.StartInfo.FileName = @"C:\Frameworks\Python\Python310\python.exe";
+                        process.StartInfo.FileName = CryptoBotController.pythonPath;
                         process.StartInfo.UseShellExecute = false;
                         process.StartInfo.Arguments = string.Format("{0} {1}", "Buying.Py", "") + args;
                         process.StartInfo.RedirectStandardOutput = true;
                         process.Start();
 
-                        process.WaitForExit();
+                        await process.WaitForExitAsync();
                         if (process.ExitCode == 0)
                         {
                             result = process.StandardOutput.ReadToEnd();

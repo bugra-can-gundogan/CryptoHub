@@ -1,7 +1,7 @@
 ﻿CryptoHub
 1.0.0.0
 
-exe
+winexe
 C#
 .cs
 C:\Users\bugra\OneDrive\Belgeler\GitHub\CryptoHub\CryptoHub\obj\Debug\net6.0-windows\
@@ -12,7 +12,7 @@ TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 C:\Users\bugra\OneDrive\Belgeler\GitHub\CryptoHub\CryptoHub\App.xaml
 11-1915528825
 
-23-401973462
+211842921715
 2061447297528
 LoginWindow.xaml;MainWindow.xaml;MVVM\View\CryptoBotView.xaml;MVVM\View\MarketView.xaml;MVVM\View\WalletView.xaml;MVVM\View\WatchListView.xaml;Theme\FinalSearchBox.xaml;Theme\MenuButtonTheme.xaml;Theme\ModernDataGrid.xaml;Theme\MuhControlButtons.xaml;Theme\SearchBoxTheme.xaml;
 

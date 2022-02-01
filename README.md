@@ -3,6 +3,17 @@ An application created with the aim of making it easier to control and observe y
 
 Changelog:
 
+01.02.2022 - Buğra Gündoğan
+- Program now finds the python path on its own.
+- Cleaned some classes that are no longer used.
+- Fixed an error regarding "LOT SIZE".
+- Fixed an error regarding "MAXIMUM PRECISION".
+- Fixed the stutter during the CryptoBot execution.
+- Fixed some errors that occured after the implementation of Login Screen as startup window. Basically application couldn't find the MainWindow using the old method because it was no longer the startup window. Now it works fine.
+
+  Issues to be addressed:
+  - Testing. Lots of lots of testing without spending much money hopefully... :)
+
 31.01.2022 - Raanem Dahbi(2)
   
   -Quit button functionality.

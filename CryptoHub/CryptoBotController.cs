@@ -15,5 +15,6 @@ namespace CryptoHub
         public static Dictionary<string, decimal> ownedCoinsByUser = new Dictionary<string, decimal>();
         public static string original_Api_Key = "";
         public static string original_Api_Secret = "";
+        public static string pythonPath = "";
     }
 }

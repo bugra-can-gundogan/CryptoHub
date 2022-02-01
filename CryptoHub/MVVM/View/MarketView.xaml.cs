@@ -241,6 +241,7 @@ namespace CryptoHub.MVVM.View
 
             symbol = selectedCoin;
             amount = Convert.ToDecimal(AmountTextBoxMarket.Text);
+            amount = Math.Round(amount, 8);
 
             string z = _bRelation.BuyOrSellWithMarketOrLimit(symbol, Binance.Net.Enums.OrderSide.Buy, amount);
             MessageBox.Show(z);
@@ -273,7 +274,7 @@ namespace CryptoHub.MVVM.View
 
             symbol = selectedCoin;
             amount = Convert.ToDecimal(AmountTextBoxMarket.Text);
-
+            amount = Math.Round(amount, 8);
 
             string z = _bRelation.BuyOrSellWithMarketOrLimit(symbol, Binance.Net.Enums.OrderSide.Sell, amount);
             MessageBox.Show(z.ToString());

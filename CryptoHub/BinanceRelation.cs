@@ -22,7 +22,8 @@ namespace CryptoHub
             BinanceClient client = new BinanceClient(new BinanceClientOptions()
             {
                 // Specify options for the client
-                ApiCredentials = new CryptoExchange.Net.Authentication.ApiCredentials(api_key, api_secret)
+                ApiCredentials = new CryptoExchange.Net.Authentication.ApiCredentials(api_key, api_secret),
+                TradeRulesBehaviour = Binance.Net.Enums.TradeRulesBehaviour.AutoComply
             });
             _client = client;
         }
@@ -121,7 +122,7 @@ namespace CryptoHub
         public string BuyOrSellWithMarketOrLimit(string symbol, Binance.Net.Enums.OrderSide buyOrSell, decimal quantity)
         {
 
-            var result = _client.Spot.Order.PlaceTestOrderAsync(symbol, buyOrSell, Binance.Net.Enums.OrderType.Market, quantity);
+            var result = _client.Spot.Order.PlaceOrderAsync(symbol, buyOrSell, Binance.Net.Enums.OrderType.Market, quantity);
             bool x = result.Result.Success;
             if (x)
             {

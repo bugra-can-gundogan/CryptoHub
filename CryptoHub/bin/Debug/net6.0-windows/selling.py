@@ -8,6 +8,7 @@ import sys
 api_key = sys.argv[1]
 api_secret = sys.argv[2]
 qunatityAllowed = float(sys.argv[3])
+qunatityAllowed = float(round(qunatityAllowed,8))
 symbolSpecified = sys.argv[4]
 buy_price = float(sys.argv[5])
 
