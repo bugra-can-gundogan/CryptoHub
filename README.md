@@ -3,6 +3,23 @@ An application created with the aim of making it easier to control and observe y
 
 Changelog:
 
+RoadMap:
+- Dividing the wallet into portfolios
+- Limit orders
+- A home page where the user is informed about the daily performance of coins in the market, top performing coins etc.
+- A new strategy for cryptobot
+- Loading popups
+- A logo drawn in photoshop
+- Minimize window functionality
+- Search box autosuggest
+- More calculations in the watchlist tab, like how much profit or loss the coin would have made if it was bought the date it was added to the list
+
+
+07.02.2022 - B.Gundogan & R.Dahbi
+- Fixed an error where the open_position variable was getting bugged.
+- Added some more comments
+- Deleted anything not used
+
 01.02.2022 - Buğra Gündoğan
 - Program now finds the python path on its own.
 - Cleaned some classes that are no longer used.
