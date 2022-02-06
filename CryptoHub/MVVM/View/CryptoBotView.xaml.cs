@@ -24,11 +24,13 @@ namespace CryptoHub.MVVM.View
     /// </summary>
     public partial class CryptoBotView : UserControl
     {
+        //collection that is binded to the datagrid
         public ObservableCollection<CryptoViewDataGridRowClass> datagridBindedCollection;
 
         public CryptoBotView()
         {
             InitializeComponent();
+            //boolean that checks if bot was running, if it is running we load the labels and datagrid list from static class cryptobotcontroller.cs
             if (CryptoBotController.botIsRunning)
             {
                 datagridBindedCollection = ((MainWindow)Application.Current.Windows[0]).datagridBindedCollection;
@@ -41,15 +43,18 @@ namespace CryptoHub.MVVM.View
             {
                 datagridBindedCollection = new ObservableCollection<CryptoViewDataGridRowClass>();
             }
+            //binding the datagrid
             ActivityDataGrid.ItemsSource = datagridBindedCollection;
            
         }
 
+        //regex to check user's input on total value textbox
         private void PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             Regex regex = new Regex(@"^[0-9\.]+$");
             e.Handled = !regex.IsMatch(e.Text);
         }
+        //custom function that detects the path of 'pythonw.exe' in the user's computer
         private string getPythonPath()
         {
             var path = Environment.GetEnvironmentVariable("PATH");
@@ -66,8 +71,10 @@ namespace CryptoHub.MVVM.View
             return pythonPath;
         }
 
+        //Event of cryptobot run button click
         private void Button_Click(object sender, RoutedEventArgs e) // Run the crypto bot
         {
+            //checking if python is installed in user's computer
             string getMePythonPath = getPythonPath();
             if (getMePythonPath == "")
             {
@@ -79,14 +86,14 @@ namespace CryptoHub.MVVM.View
                 CryptoBotController.pythonPath = getMePythonPath;
             }
 
-
+      
             string valueStr = ValueAllowedByUserLBL.Text;
             string parityStr = ParityWantedToTradeLBL.Text;
 
             decimal valueInUsd;
 
             var parsable = decimal.TryParse(valueStr, out valueInUsd);
-
+            //checking user input
             if (!parsable)
             {
                 MessageBox.Show("Please enter a correct value for USDT to trade with.");
@@ -102,9 +109,8 @@ namespace CryptoHub.MVVM.View
             string api_key = CryptoBotController.original_Api_Key;
             string api_secret = CryptoBotController.original_Api_Secret;
 
-            BinanceRelation binanceRelation = new BinanceRelation(api_key, api_secret);
-            Dictionary<string,decimal> coinsInMarket = binanceRelation.BuildDictionary();
-
+            Dictionary<string,decimal> coinsInMarket = CryptoBotController.coinsInTheMarket;
+            //checking if the user's wanted parity is in Binance
             if (!coinsInMarket.ContainsKey(parityStr))
             {
                 MessageBox.Show("This parity doesn't exist in Binance.");
@@ -117,7 +123,8 @@ namespace CryptoHub.MVVM.View
 
             CryptoBotController.parityLabel = ParityWantedToTradeLBL.Text;
             CryptoBotController.valueLabel = ValueAllowedByUserLBL.Text;
-
+            //setting the values for mainwindow class which handles the execution of python files
+            //we also access the dispatchertimer of mainwindow from here and start the execution
             ((MainWindow)Application.Current.Windows[0]).parity = parityStr;
             ((MainWindow)Application.Current.Windows[0]).api_key = api_key;
             ((MainWindow)Application.Current.Windows[0]).api_secret = api_secret;
@@ -132,7 +139,8 @@ namespace CryptoHub.MVVM.View
             runBotBtn.IsEnabled = false;
             stopBotBtn.IsEnabled = true;
         }
-
+        //function that is called when stop button is clicked.
+        //once this is called, we access dispatchertimer of mainwindow and stop it
         private void stopBotBtn_Click(object sender, RoutedEventArgs e)
         {
             ((MainWindow)Application.Current.Windows[0]).timerstop();

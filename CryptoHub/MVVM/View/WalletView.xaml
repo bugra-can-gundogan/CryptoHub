@@ -26,9 +26,10 @@
                 <StackPanel Margin="0 0 10 0" Orientation="Vertical" Width="175" HorizontalAlignment="Left"   >
                     <Label Name="walletTotalValLbl" Content="Total Value($):" FontSize="16"></Label>
                     <Separator/>
-                    <Label Name="DailyPNRLbl" Content="Daily PNR:"></Label>
-                    <Label Name="LastMonthLbl" Content="Change since last month:"></Label>
-                    <Label Name="YearPNRLbl" Content="Change this year:"></Label>
+                    <Label Content="This value doesn't include FIAT currencies." FontSize="8"></Label>
+                    <Label Name="DailyPNRLbl" Content="Daily PNR:" Visibility="Hidden"></Label>
+                    <Label Name="LastMonthLbl" Content="Change since last month:" Visibility="Hidden"></Label>
+                    <Label Name="YearPNRLbl" Content="Change this year:" Visibility="Hidden"></Label>
                 </StackPanel>
                 <StackPanel Orientation="Vertical">
                     <DockPanel>

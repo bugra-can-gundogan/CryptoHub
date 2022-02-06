@@ -1372,11 +1372,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\bugra\\OneDrive\\Belgeler\\GitHub\\CryptoHub\\CryptoHub\\CryptoHub.csproj",
+      "projectUniqueName": "C:\\Latest Version\\CryptoHub\\CryptoHub.csproj",
       "projectName": "CryptoHub",
-      "projectPath": "C:\\Users\\bugra\\OneDrive\\Belgeler\\GitHub\\CryptoHub\\CryptoHub\\CryptoHub.csproj",
+      "projectPath": "C:\\Latest Version\\CryptoHub\\CryptoHub.csproj",
       "packagesPath": "C:\\Users\\bugra\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\bugra\\OneDrive\\Belgeler\\GitHub\\CryptoHub\\CryptoHub\\obj\\",
+      "outputPath": "C:\\Latest Version\\CryptoHub\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\bugra\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace CryptoHub.Core
 {
+    //observable object that inherits INotifyPropertyChanged class, it is used in grid.row = 1 grid.column = 1 in the mainwindow.xaml
     internal class ObservableObject : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler? PropertyChanged;

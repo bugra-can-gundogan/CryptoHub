@@ -7,6 +7,7 @@ using System.Windows.Input;
 
 namespace CryptoHub.Core
 {
+    //custom relaycommand that enables us to change the view
     class RelayCommand:ICommand
     {
         private Action<object> _execute;

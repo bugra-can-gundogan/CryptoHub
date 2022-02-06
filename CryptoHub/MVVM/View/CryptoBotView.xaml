@@ -26,7 +26,7 @@
                           HorizontalAlignment="Stretch" 
                           HorizontalContentAlignment="Stretch"></DataGrid>
             </StackPanel>
-            <StackPanel Orientation="Vertical" Margin="0,10,0,0">
+            <StackPanel Visibility="Hidden" Orientation="Vertical" Margin="0,10,0,0">
                 <Label FontSize="16" Foreground="#EEEEEE" Content="Summary:"></Label>
                 <StackPanel Orientation="Vertical">
                     <Label FontSize="16" Foreground="#EEEEEE" Content="Started with"></Label>

@@ -24,6 +24,10 @@ namespace CryptoHub.MVVM.View
     /// <summary>
     /// Interaction logic for WalletView.xaml
     /// </summary>
+    /// //This view is used to show the user their owned coins
+    /// //logic is very similar with marketview.xaml
+    /// //piechart only shows the coins that have more value in the wallet than 15$
+    /// //datagrid shows every coin
     public partial class WalletView : UserControl
     {
         BinanceRelation _bRelation;
@@ -32,16 +36,19 @@ namespace CryptoHub.MVVM.View
         public WalletView()
         {
             InitializeComponent();
+            //setting the culture to US, so that it shows $ instead of try
             CultureInfo USCulture = new CultureInfo("en-US");
             Thread.CurrentThread.CurrentCulture = USCulture;
-
+            //getting the api_key and secret
             string api_key = CryptoBotController.original_Api_Key;
             string api_secret = CryptoBotController.original_Api_Secret;
-
+            //creating an instance of BinanceRelation class
             _bRelation = new BinanceRelation(api_key, api_secret);
+            //getting the dictionaries that hold ownedcoins and marketcoins
             ownedCoins = CryptoBotController.ownedCoinsByUser;
             marketCoins = CryptoBotController.coinsInTheMarket;
-
+            //updating the coins values and information etc.
+            //and then we bind the datagrid to the coins list
             var taskForCoinsOwned = _bRelation.getWalletDataTask().GetAwaiter();
             taskForCoinsOwned.OnCompleted(() =>
             {
@@ -63,15 +70,16 @@ namespace CryptoHub.MVVM.View
                 AllCoinsDataGrid.ItemsSource = null;
                 AllCoinsDataGrid.ItemsSource = coins;
             });
-
+            //function that builds the base of pie chart
             BuildWalletChart();
-
+            //dispatcher timer that has a function that will be called every 5 seconds to update the graph and datagrid
             DispatcherTimer timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromSeconds(5);
             timer.Tick += timer_Tick;
             timer.Start();
         }
 
+        //function that updates datagrid and piechart every 5 seconds
         private void timer_Tick(object? sender, EventArgs e)
         {
             double Total = 0;
@@ -80,19 +88,8 @@ namespace CryptoHub.MVVM.View
             {
                 List<Coin> coins = new List<Coin>();
                 Dictionary<string, Tuple<double,decimal,decimal>> updatedCoins = callforUpdatedCoins.GetResult();
-                foreach (var series in WalletSeriesCollection)
-                {
-                    int X = series.Values.Cast<ObservableValue>().Count();
-                    string tit = series.Title;
-                    foreach (var observable in series.Values.Cast<ObservableValue>())
-                    {
-                        observable.Value = updatedCoins[series.Title].Item1;
-                    }
-                    Total += updatedCoins[series.Title].Item1;
-                }
-                walletTotalValLbl.Content = "Total Value($): " + Total.ToString();
-
-                foreach(var item in updatedCoins)
+                //updating the datagrid
+                foreach (var item in updatedCoins)
                 {
                     coins.Add(new Coin()
                     {
@@ -104,34 +101,26 @@ namespace CryptoHub.MVVM.View
                 }
                 AllCoinsDataGrid.ItemsSource = null;
                 AllCoinsDataGrid.ItemsSource = coins;
-            });
-            
 
-            /*var taskForCoinsOwned = _bRelation.getWalletDataTask().GetAwaiter();
-            taskForCoinsOwned.OnCompleted(() =>
-            {
-                List<Coin> coins = new List<Coin>();
-                Dictionary<string, decimal> ownedCoins = taskForCoinsOwned.GetResult();
-                foreach (var item in ownedCoins)
+                //updating the graph
+                foreach (var series in WalletSeriesCollection)
                 {
-                    if (marketCoins.ContainsKey(item.Key + "USDT"))
+                    int X = series.Values.Cast<ObservableValue>().Count();
+                    string tit = series.Title;
+                    foreach (var observable in series.Values.Cast<ObservableValue>())
                     {
-                        coins.Add(new Coin()
-                        {
-                            Name = item.Key,
-                            Price = marketCoins[item.Key + "USDT"],
-                            Quantity = item.Value,
-                            Total = item.Value * marketCoins[item.Key + "USDT"]
-                        });
+                        observable.Value = updatedCoins[series.Title].Item1;
                     }
+                    Total += updatedCoins[series.Title].Item1;
                 }
-                AllCoinsDataGrid.ItemsSource = null;
-                AllCoinsDataGrid.ItemsSource = coins;
-            });*/
 
+                walletTotalValLbl.Content = "Total Value($): " + Total.ToString();
+            });
         }
+        //series collection that is binded to the piechart
         public SeriesCollection WalletSeriesCollection { get; set; }
 
+        //function that builds the base of pie chart
         private void BuildWalletChart()
         {
             WalletSeriesCollection = new SeriesCollection { };
@@ -141,7 +130,8 @@ namespace CryptoHub.MVVM.View
                 if (marketCoins.ContainsKey(coin.Key + "USDT"))
                 {
                     double totalValOfCoin = Convert.ToDouble(marketCoins[coin.Key + "USDT"] * coin.Value);
-                    if(totalValOfCoin > 10)
+                    totalValOfCoin = Math.Round(totalValOfCoin, 2);
+                    if (totalValOfCoin > 10)
                     {
                         WalletSeriesCollection.Add(new PieSeries
                         {
@@ -155,6 +145,7 @@ namespace CryptoHub.MVVM.View
             DataContext = this;
         }
 
+        //coin class that is used in datagrid
         public class Coin
         {
             public string Name { get; set; }

@@ -5,6 +5,7 @@ import numpy as np
 import time
 import sys
 
+# getting the arguments from c# file
 api_key = sys.argv[1]
 api_secret = sys.argv[2]
 qunatityAllowed = float(sys.argv[3])
@@ -12,8 +13,10 @@ qunatityAllowed = float(round(qunatityAllowed,8))
 symbolSpecified = sys.argv[4]
 buy_price = float(sys.argv[5])
 
+#building the client
 client = Client(api_key,api_secret)
 
+#function that fetches prices throughout the last minute
 def getminutedata(symbol, interval, lookback):
     frame = pd.DataFrame(client.get_historical_klines(symbol,
                                                       interval,
@@ -25,7 +28,7 @@ def getminutedata(symbol, interval, lookback):
     frame = frame.astype(float)
     return frame
 
-
+#function that applies analysis using ta library
 def applytechnicals(df):
     df['%K'] = ta.momentum.stoch(df.High, df.Low, df.Close, window = 14,
                                  smooth_window=3)
@@ -34,6 +37,7 @@ def applytechnicals(df):
     df['macd'] = ta.trend.macd_diff(df.Close)
     df.dropna(inplace=True)
 
+# class that decides whether we should by or not
 class Signals:
 
     def __init__(self, df, lags):
@@ -53,6 +57,9 @@ class Signals:
     (self.df['%K'].between(20,80)) & (self.df['%D'].between(20,80))
                                   & (self.df.rsi>50) & (self.df.macd>0), 1, 0)
 
+#main function that uses all above functions and signals class
+#and outputs to the console the activity
+#this output is read by the wpf program and printed for the user
 def strategy(pair, qty):
     df = getminutedata(pair, '1m', '100')
     applytechnicals(df)
@@ -60,8 +67,6 @@ def strategy(pair, qty):
     inst.decide()
     print(f'INFO:current Close is ' + str(df.Close.iloc[-1]))
     if df.Buy.iloc[-1]:
-        #qty for both
-        # # #
         order = client.create_order(symbol = pair,
                                     side = 'BUY',
                                     type = 'MARKET',
@@ -70,6 +75,7 @@ def strategy(pair, qty):
         buyprice = float(order['fills'][0]['price'])
         print(str(buyprice))
 
+#running the strategy function and outputting the result or the error
 try:
     strategy(symbolSpecified, qunatityAllowed)
 except Exception as e:

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "H1o611NcSQWugnOHtVyC7hIteMUg4VZOqjksEq/vMnth7AnKxberamUzty/Qz1jvkhb5xKolegNq3vhUgDaW+g==",
+  "dgSpecHash": "XSkMSTMdRb2h0FxilDVoZ5dlgqPioWOLCoKs2Hdc/mdJrIopz8DrMTLdXTcc8uCe4N9lOGdorIguBw6SNykgPQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\bugra\\OneDrive\\Belgeler\\GitHub\\CryptoHub\\CryptoHub\\CryptoHub.csproj",
+  "projectFilePath": "C:\\Latest Version\\CryptoHub\\CryptoHub.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\bugra\\.nuget\\packages\\binance.net\\7.2.7\\binance.net.7.2.7.nupkg.sha512",
     "C:\\Users\\bugra\\.nuget\\packages\\cryptoexchange.net\\4.2.8\\cryptoexchange.net.4.2.8.nupkg.sha512",

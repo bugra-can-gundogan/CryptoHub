@@ -8,12 +8,15 @@ using Binance.Net.Objects;
 
 namespace CryptoHub
 {
+    //BinanceRelation class that handles all the connections with Binance.COM
     public class BinanceRelation
     {
+        //api_key, api_secret and _client itself
         public static string api_key = "";
         public static string api_secret = "";
         BinanceClient _client;
 
+        //constructor
         public BinanceRelation(string apikey, string apisecret)
         {
             api_key = apikey;
@@ -21,37 +24,13 @@ namespace CryptoHub
 
             BinanceClient client = new BinanceClient(new BinanceClientOptions()
             {
-                // Specify options for the client
                 ApiCredentials = new CryptoExchange.Net.Authentication.ApiCredentials(api_key, api_secret),
                 TradeRulesBehaviour = Binance.Net.Enums.TradeRulesBehaviour.AutoComply
             });
             _client = client;
         }
-
-        public Dictionary<String,decimal> BuildDictionary()
-        {
-            var callresult = _client.Spot.Market.GetPricesAsync();
-            Dictionary<String, decimal> coinDictionary = new Dictionary<String, decimal>();
-
-            if (!callresult.Result.Success)
-            {
-                coinDictionary.Add("Unsuccesful Connection.", 0);
-                coinDictionary.Add(callresult.Result.Error.Message, 0);
-                return coinDictionary;
-            }
-            var rawdata = callresult.Result.Data;
-            
-
-            foreach (var symbol in rawdata)
-            {
-                if (symbol.Symbol.Contains("USDT"))
-                {
-                    coinDictionary.Add(symbol.Symbol, symbol.Price);
-                }
-            }
-            return coinDictionary;
-        }
-
+     
+        //Building a dictionary that will save every coin in Binance exchange.
         public async Task<Dictionary<String, decimal>> BuildDictionaryTask()
         {
             var callresult = await _client.Spot.Market.GetPricesAsync();
@@ -75,6 +54,7 @@ namespace CryptoHub
             return coinDictionary;
         }
 
+        //Getting the Price History of parity
         public async Task<Dictionary<String, decimal>> PriceHistoryOfParity(string symbol)
         {
             DateTime today = DateTime.Now;
@@ -98,7 +78,8 @@ namespace CryptoHub
 
             return priceHistory;
         }
-
+        
+        //Getting the current price of parity
         public async Task<List<decimal>> UpdatePriceOfSymbol(string symbol)
         {
             var callforDailyHigh = await _client.Spot.Market.GetTickerAsync(symbol, default);
@@ -119,6 +100,7 @@ namespace CryptoHub
             }          
         }
         
+        //Trading - BUY OR SELL
         public string BuyOrSellWithMarketOrLimit(string symbol, Binance.Net.Enums.OrderSide buyOrSell, decimal quantity)
         {
 
@@ -135,6 +117,7 @@ namespace CryptoHub
             }
         }
 
+        //getting the owned coins and their volume that is owned by the user.
         public async Task<Dictionary<string,decimal>> getWalletDataTask()
         {
             var callforWalletInfo = await _client.General.GetAccountInfoAsync();
@@ -155,6 +138,7 @@ namespace CryptoHub
             return coinsOwnedDictionary;
         }
 
+        //getting the current price, current hold volume, current total value in USDT for each owned coin
         public async Task<Dictionary<string,Tuple<double,decimal,decimal>>> updateOwnedCoinsTask()
         {
             Dictionary<string, Tuple<double, decimal,decimal>> coinsWithNewPrices = new Dictionary<string, Tuple<double, decimal,decimal>>();
@@ -177,7 +161,9 @@ namespace CryptoHub
                     string strUsdtRemoved = price.Symbol.Replace("USDT", "");
                     if (coinsOwnedDictionary.ContainsKey(strUsdtRemoved))
                     {
-                        Tuple<double, decimal,decimal> coinNumericInfo = new Tuple<double,decimal,decimal>(Convert.ToDouble(price.Price*coinsOwnedDictionary[strUsdtRemoved]), coinsOwnedDictionary[strUsdtRemoved],price.Price);
+                        double totalValInUsdt = Convert.ToDouble(price.Price * coinsOwnedDictionary[strUsdtRemoved]);
+                        totalValInUsdt = Math.Round(totalValInUsdt, 2);
+                        Tuple<double, decimal,decimal> coinNumericInfo = new Tuple<double,decimal,decimal>(totalValInUsdt, coinsOwnedDictionary[strUsdtRemoved],price.Price);
                         coinsWithNewPrices.Add(strUsdtRemoved, coinNumericInfo);
                     }
                 }
