@@ -9,11 +9,21 @@ import sys
 api_key = sys.argv[1]
 api_secret = sys.argv[2]
 qunatityAllowed = float(sys.argv[3])
-qunatityAllowed = float(round(qunatityAllowed,8))
 symbolSpecified = sys.argv[4]
 buy_price = float(sys.argv[5])
+
 #building the client
 client = Client(api_key,api_secret)
+
+#change for lotsize
+info = client.get_symbol_info(symbolSpecified)
+step_size_allowed_by_binance = info['filters'][2]['stepSize']
+howManyDecimals = 0
+after_dp = step_size_allowed_by_binance.split('.')[1]
+howManyDecimals = len(after_dp)
+
+qunatityAllowed = round(qunatityAllowed,howManyDecimals)
+
 
 #function that fetches prices throughout the last minute
 def getminutedata(symbol, interval, lookback):

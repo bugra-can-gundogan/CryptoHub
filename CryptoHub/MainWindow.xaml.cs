@@ -90,8 +90,10 @@ namespace CryptoHub
             var x = RunPythonBot().GetAwaiter();
             x.OnCompleted(() =>
             {
-                datagridBindedCollection.Add(
-                new CryptoViewDataGridRowClass() { Date = DateTime.Now, Messagge = x.GetResult() });
+                datagridBindedCollection.Insert(0, new CryptoViewDataGridRowClass() { Date = DateTime.Now, Messagge = x.GetResult() }
+                    );
+                /*datagridBindedCollection.Add(
+                new CryptoViewDataGridRowClass() { Date = DateTime.Now, Messagge = x.GetResult() });*/
             });
         }
 
